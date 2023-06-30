@@ -1,0 +1,45 @@
+﻿@model Biblioteca_MVC.Models.Personal
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos titulosAgregar">Eliminar <b class="colorTitulo">Personal</b></h1>
+    <hr />
+    <div class="row FormularioGeneral">
+        <dl class="row">
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Cargo)
+            </dt>
+            <dd class="col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Cargo)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Usuario)
+            </dt>
+            <dd class="col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Usuario.Nombre)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Usuario.Apellido)
+            </dt>
+            <dd class="col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Usuario.Apellido)
+            </dd>
+        </dl>
+    
+        <form asp-action="Delete" class="formBotones d-flex justify-content-center">
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+</div>

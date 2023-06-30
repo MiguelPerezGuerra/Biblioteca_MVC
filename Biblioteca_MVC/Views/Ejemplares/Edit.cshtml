@@ -1,0 +1,55 @@
+﻿@model Biblioteca_MVC.Models.Ejemplare
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos titulosAgregar">Editar <b class="colorTitulo">Ejemplar</b></h1>
+    <hr />
+    <div class="row FormularioGeneral">
+        <div class="col">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="LibroId" class="control-label"></label>
+                    <select asp-for="LibroId" class="form-control" asp-items="ViewBag.LibroId"></select>
+                    <span asp-validation-for="LibroId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UbicacionId" class="control-label"></label>
+                    <select asp-for="UbicacionId" class="form-control" asp-items="ViewBag.UbicacionId"></select>
+                    <span asp-validation-for="UbicacionId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CopiasDisponibles" class="control-label"></label>
+                    <input asp-for="CopiasDisponibles" class="form-control" />
+                    <span asp-validation-for="CopiasDisponibles" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label>
+                    <input asp-for="Estado" class="form-control" />
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+
+                <div class="formBotones d-flex justify-content-center ">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+
+                    <div>
+                        <a asp-action="Index" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

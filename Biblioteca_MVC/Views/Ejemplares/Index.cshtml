@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Biblioteca_MVC.Models.Ejemplare>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos">Lista de <b class="colorTitulo">Ejemplares</b></h1>
+
+    <form asp-controller="Ejemplares" asp-action="Index">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="search-box d-flex w-100">
+                    <button type="submit" class="btn btnSearch">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" name="buscar" class="form-control text-opacity-75" placeholder="Buscar por nombre de libro&hellip;" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-info">+ Agregar</a>
+                </p>
+
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-hover">
+        <thead class="text-start">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CopiasDisponibles)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Libro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ubicacion)
+                </th>
+                <th class="campoAcciones text-center">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CopiasDisponibles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Libro.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ubicacion.Estante)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>  |  
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

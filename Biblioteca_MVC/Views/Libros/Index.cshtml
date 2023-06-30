@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Biblioteca_MVC.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos">Lista de <b class="colorTitulo" >Libros</b></h1>
+
+    <form asp-controller="Libros" asp-action="Index">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="search-box d-flex w-100">
+                    <button type="submit" class="btn btnSearch">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" name="buscar" class="form-control text-opacity-75" placeholder="Buscar por nombre de libro&hellip;" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-info">+ Agregar</a>
+                </p>
+
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-hover">
+        <thead class="text-start">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnioPublicacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroCopias)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AutorNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoriaNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EditorialNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GeneroNavigation)
+                </th>
+                <th class="campoAcciones text-center">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnioPublicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroCopias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AutorNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditorialNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GeneroNavigation.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>  |  
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,58 @@
+﻿@model Biblioteca_MVC.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos titulosAgregar">Eliminar <b class="colorTitulo">Prestamo</b></h1>
+    <hr />
+        <div class="row FormularioGeneral">
+        <dl class="row">
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.FechaPrestamo)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.FechaPrestamo)
+            </dd>
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.FechaLimiteDevolucion)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.FechaLimiteDevolucion)
+            </dd>
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Libro)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Libro.Titulo)
+            </dd>
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Usuario)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Usuario.Nombre)
+            </dd>
+        </dl>
+    
+        <form asp-action="Delete" class="formBotones d-flex justify-content-center">
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+</div>

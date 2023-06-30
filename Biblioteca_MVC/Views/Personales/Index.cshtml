@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Biblioteca_MVC.Models.Personal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos">Lista de <b class="colorTitulo">Personal</b></h1>
+
+    <form asp-controller="Personales" asp-action="Index">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="search-box d-flex w-100">
+                    <button type="submit" class="btn btnSearch">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" name="buscar" class="form-control text-opacity-75" placeholder="Buscar por Cargo&hellip;" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-info">+ Agregar</a>
+                </p>
+
+            </div>
+        </div>
+    </form>
+
+        <table class="table table-hover">
+            <thead class="text-start">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cargo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.CorreoElectronico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Telefono)
+                </th>
+                <th class="campoAcciones text-center">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.CorreoElectronico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Telefono)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>  |  
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

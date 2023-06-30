@@ -1,0 +1,69 @@
+﻿@model Biblioteca_MVC.Models.Libro
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="ContenedorFormulario">
+
+    <h1 class="titulos titulosAgregar">Eliminar <b class="colorTitulo">Libros</b></h1>
+    <hr />
+    <div class="row FormularioGeneral">
+        <dl class="row">
+            <dt class = "col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+            <dd class = "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.AnioPublicacion)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.AnioPublicacion)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.NumeroCopias)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.NumeroCopias)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.AutorNavigation)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.AutorNavigation.Nombre)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.CategoriaNavigation)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.CategoriaNavigation.Nombre)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.EditorialNavigation)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.EditorialNavigation.Nombre)
+            </dd>
+            <dt class="col-sm-6 text-end">
+                @Html.DisplayNameFor(model => model.GeneroNavigation)
+            </dt>
+            <dd class= "col-sm-6 text-start">
+                @Html.DisplayFor(model => model.GeneroNavigation.Nombre)
+            </dd>
+        </dl>
+    
+        <form asp-action="Delete" class="formBotones d-flex justify-content-center">
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+</div>
